@@ -6,8 +6,8 @@ import Product from '../components/Product';
 const API = 'https://shopping-cart-api.khriztianmoreno.now.sh/api/products';
 
 const getProducts = async(setProducts) => {
-  try {;
-    const result = await fetch(API)
+  try {
+    const result = await fetch(API);
     const products = await result.json();
     setProducts(products);
   } catch (error) {

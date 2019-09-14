@@ -1,7 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import FormRegister from '../components/Register';
+
+const API = 'https://shopping-cart-api.khriztianmoreno.now.sh/api/users';
+
+const createUser = async(form) => {
+  const payload = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(form),
+  };
+
+  try {
+    const result = await fetch(API, payload);
+    const user = await result.json();
+    if (user && user.token) {
+      localStorage.setItem('userEco', JSON.stringify(user))
+    }
+  } catch (error) {
+    console.error('Error :(', error);
+  }
+}
 
 const Register = () => (
   <div className="container">
@@ -14,7 +34,7 @@ const Register = () => (
               <div className="text-center">
                 <h1 className="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <FormRegister />
+              <FormRegister handleSumbit={createUser} />
               <hr />
               <div className="text-center">
                 <Link className="small" to="/login">Already have an account? Login!</Link>
@@ -27,4 +47,4 @@ const Register = () => (
   </div>
 );
 
-export default Register;
+export default withRouter(Register);
