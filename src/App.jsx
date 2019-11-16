@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Product from './pages/Product';
 
 import './App.css'
 
@@ -30,6 +31,11 @@ const Routes = () => (
         path="/register"
         exact
         component={Register}
+      />
+      <Route
+        path="/product"
+        exact
+        component={Product}
       />
     </Switch>
   </BrowserRouter>
