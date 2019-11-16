@@ -22,6 +22,9 @@ const Header = () => (
             <Link className="nav-link" to="/login">Login</Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link" to="/product">Register product</Link>
+          </li>
+          <li className="nav-item">
             <a className="nav-link" href="https://medellinjs.org" target="_blank" rel="noopener noreferrer">Contact</a>
           </li>
         </ul>
